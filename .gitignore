@@ -1,0 +1,42 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache/build files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets / keys
+*.pem
+*.key
+*.crt
+*.p12
+*.tfvars
+
+# Terraform state
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
