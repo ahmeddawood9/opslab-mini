@@ -40,3 +40,7 @@ build/
 .DS_Store
 .vscode/
 .idea/
+
+# Local agent/tool metadata
+.agents/
+.codex/

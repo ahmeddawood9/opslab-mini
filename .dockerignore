@@ -1,25 +1,33 @@
 .git
 .gitignore
+.agents/
+.codex/
 
 .env
 .env.*
 !.env.example
 
-__pycache__
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-.venv
-venv
-env
+.venv/
+venv/
+env/
 
-.pytest_cache
+.pytest_cache/
 .coverage
-htmlcov
+htmlcov/
+dist/
+build/
+*.egg-info/
 
-.vscode
-.idea
+.vscode/
+.idea/
 .DS_Store
 
+*.db
+*.sqlite
+*.sqlite3
 *.log
