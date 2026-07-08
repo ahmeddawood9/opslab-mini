@@ -44,3 +44,6 @@ build/
 # Local agent/tool metadata
 .agents/
 .codex/
+
+# WIP docs, not ready to commit yet
+DEPLOYMENT.md
