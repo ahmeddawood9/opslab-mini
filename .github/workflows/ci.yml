@@ -16,6 +16,11 @@ jobs:
       contents: read
       packages: write
 
+    env:
+      APP_NAME: opslab-mini
+      APP_ENV: test
+      DATABASE_URL: sqlite:///./ci-test.db
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
