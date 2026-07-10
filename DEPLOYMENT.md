@@ -54,3 +54,10 @@ stop vs terminate, and the fact that stopping changes the public IP on restart.
 - Set up via `docker login ghcr.io` with `--password-stdin` (avoids the token landing in shell history).
 - Credential is stored in EC2's local Docker config and persists across reboots.
 - Verified working via a test `docker pull` of the private image.
+
+### GitHub Actions → EC2 authentication (Phase 3)
+- A dedicated SSH keypair (`opslab-cd-key`, ed25519) was generated specifically for CD — separate from the personal login key, so it can be revoked/rotated independently.
+- Public key added to EC2's `~/.ssh/authorized_keys` for the `ubuntu` user.
+- Private key stored as a GitHub repository secret: `EC2_SSH_KEY`.
+- Target host stored as secret `EC2_HOST` (the DuckDNS domain, not a raw IP, since EC2's public IP changes on stop/start).
+- SSH user stored as secret `EC2_USER`.
