@@ -48,3 +48,9 @@ stop vs terminate, and the fact that stopping changes the public IP on restart.
 - On direct pushes to `main` only — guarded by an `if:` condition checking `github.event_name` and `github.ref`, not on PRs — logs into GHCR and pushes both tags.
 - Registry: GHCR (`ghcr.io/ahmeddawood9/opslab-mini`), private visibility.
 - PRs from forks never get registry write access, by design (security).
+
+### EC2 → GHCR authentication (Phase 2)
+- EC2 authenticates to GHCR using a Personal Access Token scoped to `read:packages` only (least privilege).
+- Set up via `docker login ghcr.io` with `--password-stdin` (avoids the token landing in shell history).
+- Credential is stored in EC2's local Docker config and persists across reboots.
+- Verified working via a test `docker pull` of the private image.
