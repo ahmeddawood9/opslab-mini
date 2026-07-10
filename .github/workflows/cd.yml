@@ -43,7 +43,7 @@ jobs:
             sleep 5
 
             echo "Checking health endpoint..."
-            curl -f http://localhost:8000/health
+            curl -f http://localhost:8000/health/ready
 
             echo "Cleaning up old Docker images..."
             docker image prune -f
