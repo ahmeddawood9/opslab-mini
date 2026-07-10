@@ -66,3 +66,8 @@ stop vs terminate, and the fact that stopping changes the public IP on restart.
 - EC2 containers are Docker Compose–managed (`opslab-mini-app-1`, `opslab-mini-db-1`) — deploy commands must use `docker compose` subcommands, not raw `docker run`/`stop`/`rm`.
 - EC2 security group restricts SSH (port 22) to a single IP at a time — must be updated manually when connecting from a new network.
 - SSH auth is key-only on this instance (`PasswordAuthentication no`, verified via `sshd -T`).
+
+### Not yet implemented
+- `cd.yml` workflow itself (triggered via `workflow_run` after CI succeeds) — planned next.
+- Deploy sequence: `docker compose pull` + `docker compose up -d`.
+- Accepted tradeoff: brief downtime between old and new container during deploy (no rolling/blue-green yet).
