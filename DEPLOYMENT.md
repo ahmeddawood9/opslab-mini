@@ -61,3 +61,8 @@ stop vs terminate, and the fact that stopping changes the public IP on restart.
 - Private key stored as a GitHub repository secret: `EC2_SSH_KEY`.
 - Target host stored as secret `EC2_HOST` (the DuckDNS domain, not a raw IP, since EC2's public IP changes on stop/start).
 - SSH user stored as secret `EC2_USER`.
+
+### Known operational notes
+- EC2 containers are Docker Compose–managed (`opslab-mini-app-1`, `opslab-mini-db-1`) — deploy commands must use `docker compose` subcommands, not raw `docker run`/`stop`/`rm`.
+- EC2 security group restricts SSH (port 22) to a single IP at a time — must be updated manually when connecting from a new network.
+- SSH auth is key-only on this instance (`PasswordAuthentication no`, verified via `sshd -T`).
