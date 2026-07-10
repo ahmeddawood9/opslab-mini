@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    image: ghcr.io/ahmeddawood9/opslab-mini:latest
     ports:
       - "${APP_PORT:-8000}:8000"
     environment:
