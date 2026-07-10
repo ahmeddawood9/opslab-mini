@@ -37,3 +37,14 @@ What you'd do differently next time (check state before re-running a resource-cr
 The curl commands you used to confirm the app was live, both internally and externally.
 9. Shutdown/cost management
 stop vs terminate, and the fact that stopping changes the public IP on restart.
+
+## CI/CD Pipeline
+
+### CI (GitHub Actions — ci.yml)
+- Triggers on `push` and `pull_request` events targeting `main`.
+- Runs the test suite (`pytest`) against a throwaway SQLite database.
+- Validates the Docker Compose config.
+- Builds a Docker image tagged two ways: `latest` (moving pointer) and `sha-<commit-sha>` (immutable, used for rollback).
+- On direct pushes to `main` only — guarded by an `if:` condition checking `github.event_name` and `github.ref`, not on PRs — logs into GHCR and pushes both tags.
+- Registry: GHCR (`ghcr.io/ahmeddawood9/opslab-mini`), private visibility.
+- PRs from forks never get registry write access, by design (security).
